@@ -1,29 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Simple Flipbook</title>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/blasten/turn.js@4/turn.min.js"></script> <!-- ✅ Fixed here -->
-  <style>
-    body {
-      background: #444;
-      display: flex;
-      justify-content: center;
-      padding: 50px;
-    }
-    #flipbook {
-      width: 800px;
-      height: 600px;
-    }
-    #flipbook .page {
-      float: left;
-      width: 400px;
-      height: 600px;
-      background-size: cover;
-      background-position: center;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>86-Page Flipbook Magazine</title>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Turn.js -->
+<script src="turn.min.js"></script>
+
+<style>
+  body {
+    background: #444;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  #flipbook {
+    width: 800px;
+    height: 600px;
+  }
+  #flipbook .page {
+    width: 400px;
+    height: 600px;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 0 5px #000;
+  }
+</style>
 </head>
 <body>
 
@@ -31,11 +39,10 @@
 
 <script>
 $(document).ready(function() {
-  // Number of pages you want to show
-  const totalPages = 6;
+  const totalPages = 86;
 
   for(let i = 1; i <= totalPages; i++) {
-    let pageNumber = i.toString().padStart(3, '0');
+    let pageNumber = i.toString().padStart(3, '0'); // 001, 002, ...
     let page = $('<div class="page"></div>');
     page.css('background-image', `url(pages/page_${pageNumber}.jpg)`);
     $('#flipbook').append(page);
@@ -45,7 +52,7 @@ $(document).ready(function() {
     width: 800,
     height: 600,
     autoCenter: true,
-    display: 'double' // ✅ ensures two pages shown
+    display: 'double'
   });
 });
 </script>
