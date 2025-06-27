@@ -1,15 +1,15 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Flipbook Test</title>
 
-<!-- Use jQuery 1.11.3 for compatibility -->
-<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<!-- Use turn.js v3 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/3/turn.min.js"></script>
+<!-- turn.js from CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/4.1.0/turn.min.js"></script>
 
 <style>
   #flipbook {
@@ -32,7 +32,7 @@
 
 <script>
 $(function() {
-  const totalPages = 86; // Your total pages count
+  const totalPages = 86;
   for (let i = 1; i <= totalPages; i++) {
     const num = i.toString().padStart(3, '0');
     const page = $('<div class="page"></div>');
