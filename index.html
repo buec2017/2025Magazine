@@ -3,26 +3,33 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Flipbook Test</title>
+<title>Mung Bean Flipbook</title>
 
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<!-- turn.js library -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/4.1.0/turn.min.js"></script>
+<!-- turn.js -->
+<script src="https://cdn.jsdelivr.net/npm/turn.js@4.1.0/turn.min.js"></script>
 
 <style>
+  body {
+    background: #ddd;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
   #flipbook {
     width: 800px;
     height: 600px;
-    margin: 20px auto;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    background: white;
   }
   #flipbook .page {
     width: 400px;
     height: 600px;
-    background-size: cover;
-    background-position: center;
-    box-shadow: 0 0 5px #000;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
   }
 </style>
 </head>
@@ -31,20 +38,26 @@
 <div id="flipbook"></div>
 
 <script>
-$(function() {
-  const totalPages = 84;  // Change this if you add or remove pages
-  for (let i = 1; i <= totalPages; i++) {
+$(document).ready(function() {
+  const totalPages = 84; // number of pages
+  const $flipbook = $('#flipbook');
+
+  // Add pages dynamically
+  for(let i = 1; i <= totalPages; i++) {
     const num = i.toString().padStart(3, '0');
-    const page = $('<div class="page"></div>');
-    page.css('background-image', `url(pages/page_${num}.jpg)`);
-    $('#flipbook').append(page);
+    const $page = $('<div />').addClass('page').css('background-image', `url(pages/page_${num}.jpg)`);
+    $flipbook.append($page);
   }
 
-  $('#flipbook').turn({
+  // Initialize turn.js
+  $flipbook.turn({
     width: 800,
     height: 600,
     autoCenter: true,
-    display: 'double'
+    display: 'double',
+    acceleration: true,
+    gradients: true,
+    elevation: 50,
   });
 });
 </script>
