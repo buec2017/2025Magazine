@@ -3,26 +3,16 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>86-Page Flipbook Magazine</title>
+<title>Flipbook Test</title>
 
-<!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<!-- Turn.js -->
-<script src="turn.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/4.1.0/turn.min.js"></script>
 
 <style>
-  body {
-    background: #444;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-  }
   #flipbook {
     width: 800px;
     height: 600px;
+    margin: 20px auto;
   }
   #flipbook .page {
     width: 400px;
@@ -38,13 +28,12 @@
 <div id="flipbook"></div>
 
 <script>
-$(document).ready(function() {
+$(function() {
   const totalPages = 86;
-
-  for(let i = 1; i <= totalPages; i++) {
-    let pageNumber = i.toString().padStart(3, '0'); // 001, 002, ...
-    let page = $('<div class="page"></div>');
-    page.css('background-image', `url(pages/page_${pageNumber}.jpg)`);
+  for (let i = 1; i <= totalPages; i++) {
+    const num = i.toString().padStart(3, '0');
+    const page = $('<div class="page"></div>');
+    page.css('background-image', `url(pages/page_${num}.jpg)`);
     $('#flipbook').append(page);
   }
 
