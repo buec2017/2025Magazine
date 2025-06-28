@@ -8,8 +8,8 @@
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<!-- turn.js from CDN -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/4.1.0/turn.min.js"></script>
+<!-- turn.js stable version -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/3/turn.min.js"></script>
 
 <style>
   #flipbook {
@@ -32,7 +32,7 @@
 
 <script>
 $(function() {
-  const totalPages = 86;
+  const totalPages = 84;  // Set to 84 because you have 84 images
   for (let i = 1; i <= totalPages; i++) {
     const num = i.toString().padStart(3, '0');
     const page = $('<div class="page"></div>');
